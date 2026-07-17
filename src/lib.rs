@@ -380,8 +380,12 @@ impl FallingSandPlugin {
 
 impl Plugin for FallingSandPlugin {
     fn build(&self, app: &mut App) {
+        if !app.is_plugin_added::<EntropyPlugin>() {
+            app.add_plugins(
+                EntropyPlugin::<WyRand>::default(),
+            );
+        }
         app.add_plugins((
-            EntropyPlugin::<WyRand>::default(),
             core::FallingSandCorePlugin {
                 width: self.width_chunks * self.chunk_size,
                 height: self.height_chunks * self.chunk_size,
@@ -466,8 +470,13 @@ impl FallingSandMinimalPlugin {
 
 impl Plugin for FallingSandMinimalPlugin {
     fn build(&self, app: &mut App) {
+        if !app.is_plugin_added::<EntropyPlugin>() {
+            app.add_plugins(
+                EntropyPlugin::<WyRand>::default(),
+            );
+        }
+        
         app.add_plugins((
-            EntropyPlugin::<WyRand>::default(),
             core::FallingSandCorePlugin {
                 width: self.width_chunks * self.chunk_size,
                 height: self.height_chunks * self.chunk_size,
