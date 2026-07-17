@@ -380,7 +380,7 @@ impl FallingSandPlugin {
 
 impl Plugin for FallingSandPlugin {
     fn build(&self, app: &mut App) {
-        if !app.is_plugin_added::<EntropyPlugin>() {
+        if !app.is_plugin_added::<EntropyPlugin<WyRand>>() {
             app.add_plugins(
                 EntropyPlugin::<WyRand>::default(),
             );
@@ -470,7 +470,7 @@ impl FallingSandMinimalPlugin {
 
 impl Plugin for FallingSandMinimalPlugin {
     fn build(&self, app: &mut App) {
-        if !app.is_plugin_added::<EntropyPlugin>() {
+        if !app.is_plugin_added::<EntropyPlugin<WyRand>>() {
             app.add_plugins(
                 EntropyPlugin::<WyRand>::default(),
             );
